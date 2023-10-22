@@ -154,8 +154,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
   difficulty: 1
-  Human: {fileID: 0}
-  Bot: {fileID: 0}
+  Human: {fileID: 7812817177429933259, guid: 090c56667b82248ea9de8e28b2c4c7b5, type: 3}
+  Bot: {fileID: 322415983073070547, guid: 310a6805a7c0f4d09a9a1c83029f22f3, type: 3}
   humansPerDifficulty: 050000000a0000000f000000
 --- !u!4 &227314260
 Transform:
@@ -530,7 +530,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 626804712}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91ed6289956594172bc097f11c2af9a4, type: 3}
+  m_Script: {fileID: 11500000, guid: b4ed2eda2f0fd47ba933adab02289656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &662438250
@@ -550,7 +550,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &662438251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -675,6 +675,7 @@ GameObject:
   - component: {fileID: 1239956767}
   - component: {fileID: 1239956769}
   - component: {fileID: 1239956770}
+  - component: {fileID: 1239956771}
   m_Layer: 0
   m_Name: Cursor
   m_TagString: Untagged
@@ -793,6 +794,41 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &1239956771
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239956766}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.49999997
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
