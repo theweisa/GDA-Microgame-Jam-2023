@@ -39,9 +39,4 @@ public class Character : MonoBehaviour
      {
         rb.velocity = Vector2.Reflect(prevVelocity, collision.contacts[0].normal);
      }
-
-    // public void OnCollisionEnter(Collision collision)
-    // {
-    //     this.velocity = this.velocity(-this.velocity.x, -this.velocity.y);
-    // }
 }
