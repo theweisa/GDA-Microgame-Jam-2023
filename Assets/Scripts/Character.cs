@@ -10,6 +10,7 @@ public class Character : MonoBehaviour
     private Vector2 prevVelocity;
     public bool impostor;
     private float speed;
+    private AnimatedMovement mov;
     // private bool pause = false;
 
     // Start is called before the first frame update
@@ -18,7 +19,7 @@ public class Character : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         speed = Random.Range(minSpeed, maxSpeed);
         rb.AddForce(Random.insideUnitCircle.normalized*speed, ForceMode2D.Impulse);
-        AnimatedMovement mov = Global.FindComponent<AnimatedMovement>(gameObject);
+        mov = Global.FindComponent<AnimatedMovement>(gameObject);
         if (mov) mov.Move();
         //speed = rb.velocity.magnitude;
     }
@@ -44,7 +45,9 @@ public class Character : MonoBehaviour
     public void Pause()
     {
         // this.pause = true;
-        rb.bodyType = RigidbodyType2D.Static;
+        rb.velocity = Vector2.zero;
+        // rb.bodyType = RigidbodyType2D.Static;
+        mov.Stop();
     }
 
     void OnCollisionEnter2D(Collision2D collision)

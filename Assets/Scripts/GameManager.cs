@@ -12,6 +12,7 @@ public class GameManager : UnitySingleton<GameManager>
 
     public GameObject Human;
     public GameObject Bot;
+    public GameObject Characters;
 
     [Tooltip("ONLY 3 NUMBERS! Add number of humans by increasing difficulty.")]
     public List<int> humansPerDifficulty;
@@ -40,12 +41,15 @@ public class GameManager : UnitySingleton<GameManager>
 
     void SpawnCharacters()
     {
+        GameObject character;
         for (int i=0; i <= numHumans; i++)
         {
-            Instantiate(Human, getRandomPosition(), Quaternion.identity);
+            character = Instantiate(Human, getRandomPosition(), Quaternion.identity);
+            character.transform.parent = Characters.transform;
         }
 
-        Instantiate(Bot, getRandomPosition(), Quaternion.identity);
+        character = Instantiate(Bot, getRandomPosition(), Quaternion.identity);
+        character.transform.parent = Characters.transform;
     }
 
     Vector3 getRandomPosition()
@@ -53,11 +57,18 @@ public class GameManager : UnitySingleton<GameManager>
         Vector2 bounds = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
         return new Vector3(Random.Range(-bounds.x, bounds.x), Random.Range(-bounds.y, bounds.y), 0);
     }
+    
+    void PauseCharacters()
+    {
+        foreach (Transform child in Characters.transform)
+        {
+            child.gameObject.GetComponent<Character>().Pause();
+        }
+    }
 
     public void Win()
     {
         Debug.Log("Holy awesome");
-        win = true;
         StartCoroutine(WinRoutine());
     }
 
@@ -69,6 +80,8 @@ public class GameManager : UnitySingleton<GameManager>
 
     IEnumerator WinRoutine()
     {
+        win = true;
+        PauseCharacters();
         // Play Win Animation
         yield return new WaitForSeconds(1f);
 
@@ -78,6 +91,7 @@ public class GameManager : UnitySingleton<GameManager>
     IEnumerator LoseRoutine()
     {
         // Play Lose Animation
+        PauseCharacters();
         yield return new WaitForSeconds(1f);
 
         controller.LoseGame();

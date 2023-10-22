@@ -64,7 +64,6 @@ public class Cursor : MonoBehaviour
             {
                 if (character.impostor == true)
                 {
-                    character.Pause();
                     GameManager.Instance.Win();
                     return;
                 }
