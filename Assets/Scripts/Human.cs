@@ -5,15 +5,14 @@ using UnityEngine;
 public class Human : Character
 {
     // Start is called before the first frame update
-    protected override void Start()
+    void Start()
     {
-        base.Start();
         this.impostor = false;
     }
 
     // Update is called once per frame
-    protected override void FixedUpdate()
+    void FixedUpdate()
     {
-        base.FixedUpdate();
+        
     }
 }
