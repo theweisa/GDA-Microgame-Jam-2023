@@ -13,14 +13,14 @@ public class GameManager : UnitySingleton<GameManager>
     public GameObject Human;
     public GameObject Bot;
 
-    [Tooltip("First integer is the difficulty (1, 2, 3) and the second is the number of humans")]
-    public Dictionary<int, int> humansPerDifficulty = new Dictionary<int, int> {};
+    [Tooltip("ONLY 3 NUMBERS! Add number of humans by increasing difficulty.")]
+    public List<int> humansPerDifficulty;
     private int numHumans = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        numHumans = humansPerDifficulty[difficulty];
+        numHumans = humansPerDifficulty[difficulty-1];
         SpawnCharacters();
     }
 
