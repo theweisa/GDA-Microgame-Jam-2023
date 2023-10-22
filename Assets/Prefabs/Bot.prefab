@@ -68,6 +68,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5309321958552670685, guid: 108358e257a624815820e00684b1e728, type: 3}
+      propertyPath: m_Size.x
+      value: 1.2113806
+      objectReference: {fileID: 0}
+    - target: {fileID: 5309321958552670685, guid: 108358e257a624815820e00684b1e728, type: 3}
+      propertyPath: m_Size.y
+      value: 2.3453
+      objectReference: {fileID: 0}
+    - target: {fileID: 5309321958552670685, guid: 108358e257a624815820e00684b1e728, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.009509981
+      objectReference: {fileID: 0}
+    - target: {fileID: 5309321958552670685, guid: 108358e257a624815820e00684b1e728, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.14156973
+      objectReference: {fileID: 0}
     - target: {fileID: 5824608411667243020, guid: 108358e257a624815820e00684b1e728, type: 3}
       propertyPath: m_Name
       value: Bot
@@ -98,7 +114,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5824608411667243020, guid: 108358e257a624815820e00684b1e728, type: 3}
-      insertIndex: -1
+      insertIndex: 1
       addedObject: {fileID: -2698469506740618991}
   m_SourcePrefab: {fileID: 100100000, guid: 108358e257a624815820e00684b1e728, type: 3}
 --- !u!1 &322415983073070547 stripped
@@ -118,6 +134,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c891cc688e55d4a5fbd6b4cf1ae32fcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSpeed: 3
+  minSpeed: 1
   maxSpeed: 5
   impostor: 0
