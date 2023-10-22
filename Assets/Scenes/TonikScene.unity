@@ -674,6 +674,7 @@ GameObject:
   - component: {fileID: 1239956768}
   - component: {fileID: 1239956767}
   - component: {fileID: 1239956769}
+  - component: {fileID: 1239956770}
   m_Layer: 0
   m_Name: Cursor
   m_TagString: Untagged
@@ -760,8 +761,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d1e93e78cf954887a5d12e864ec8eb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxSpeed: 4.5
+  acceleration: 50
+  deceleration: 100
   movement: {fileID: 8440430327436403167, guid: f4a122fdf19b44b1e9bd8203b9a74138, type: 3}
   select: {fileID: 2015681313499074908, guid: f4a122fdf19b44b1e9bd8203b9a74138, type: 3}
+--- !u!50 &1239956770
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239956766}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
