@@ -9,14 +9,14 @@ public class Character : MonoBehaviour
     public bool impostor;
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = RandomMovement();
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         prevVelocity = rb.velocity;
     }
