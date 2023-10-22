@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4480832264658623400}
   - component: {fileID: 3196155480853272717}
   - component: {fileID: 3580827769154737423}
+  - component: {fileID: 5840957724754043155}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -107,6 +108,23 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5840957724754043155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661340968837495469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56bc584f67b092d4485c3b8f2f96ca6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationDegree: 10
+  rotationOffset: 2
+  rotateTimer: 0.2
+  rotateTimerOffset: 0.05
+  moving: 0
 --- !u!1 &5824608411667243020
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,6 +172,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 328e8f2c796704beeb75d6bfcf99d49c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minSpeed: 5
+  maxSpeed: 15
   impostor: 0
 --- !u!50 &-3667980256059880733
 Rigidbody2D:

@@ -5,19 +5,27 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     private Rigidbody2D rb;
+    public float minSpeed = 5;
+    public float maxSpeed = 15;
     private Vector2 prevVelocity;
     public bool impostor;
+    private float speed;
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = RandomMovement();
+        speed = Random.Range(minSpeed, maxSpeed);
+        rb.AddForce(Random.insideUnitCircle.normalized*speed, ForceMode2D.Impulse);
+        AnimatedMovement mov = Global.FindComponent<AnimatedMovement>(gameObject);
+        if (mov) mov.Move();
+        //speed = rb.velocity.magnitude;
     }
 
     // Update is called once per frame
     protected virtual void FixedUpdate()
     {
+        rb.velocity = Vector2.ClampMagnitude(rb.velocity, speed);
         prevVelocity = rb.velocity;
     }
 
@@ -35,8 +43,8 @@ public class Character : MonoBehaviour
         return false;
     }
 
-     void OnCollisionEnter2D(Collision2D collision)
+     /*void OnCollisionEnter2D(Collision2D collision)
      {
         rb.velocity = Vector2.Reflect(prevVelocity, collision.contacts[0].normal);
-     }
+     }*/
 }
