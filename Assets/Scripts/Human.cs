@@ -4,11 +4,29 @@ using UnityEngine;
 
 public class Human : Character
 {
+    public Transform accessories;
     // Start is called before the first frame update
     protected override void Start()
     {
+        if (GameManager.Instance.difficulty > 1) {
+            SetAccessories();
+        }
         base.Start();
         this.impostor = false;
+    }
+
+    void SetAccessories() {
+        int randIndex = Random.Range(0, accessories.childCount-1);
+        int i = 0;
+        foreach (Transform acc in accessories) {
+            if (i == randIndex) {
+                acc.gameObject.SetActive(true);
+            }
+            else {
+                acc.gameObject.SetActive(false);
+            }
+            i++;
+        }
     }
 
     // Update is called once per frame
