@@ -45,4 +45,16 @@ public class GameManager : UnitySingleton<GameManager>
         Vector2 bounds = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
         return new Vector3(Random.Range(-bounds.x, bounds.x), Random.Range(-bounds.y, bounds.y), 0);
     }
+
+    public void Win()
+    {
+        Debug.Log("Holy awesome");
+        controller.WinGame();
+    }
+
+    public void Lose()
+    {
+        Debug.Log("Damn you suck");
+        controller.LoseGame();
+    }
 }

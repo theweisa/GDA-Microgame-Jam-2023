@@ -34,15 +34,6 @@ public class Character : MonoBehaviour
         return new Vector2(Random.Range(-5, 5), Random.Range(-1, 1));
     }
 
-    public bool OnClick() {
-        if (this.impostor)
-        {
-            return true;
-        }
-
-        return false;
-    }
-
      /*void OnCollisionEnter2D(Collision2D collision)
      {
         rb.velocity = Vector2.Reflect(prevVelocity, collision.contacts[0].normal);
