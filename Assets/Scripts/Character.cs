@@ -5,8 +5,8 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     private Rigidbody2D rb;
-    public float minSpeed = 5;
-    public float maxSpeed = 15;
+    public float minSpeed = 1;
+    public float maxSpeed = 5;
     private Vector2 prevVelocity;
     public bool impostor;
     private float speed;
