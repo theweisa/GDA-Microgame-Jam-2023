@@ -10,6 +10,7 @@ public class Character : MonoBehaviour
     private Vector2 prevVelocity;
     public bool impostor;
     private float speed;
+    private bool pause = false;
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -25,6 +26,12 @@ public class Character : MonoBehaviour
     // Update is called once per frame
     protected virtual void FixedUpdate()
     {
+        if (this.pause)
+        {
+            rb.velocity = Vector2.zero;
+            return;
+        }
+
         // rb.velocity = Vector2.ClampMagnitude(rb.velocity, speed);
         prevVelocity = rb.velocity;
     }
@@ -32,6 +39,11 @@ public class Character : MonoBehaviour
     private Vector2 RandomMovement()
     {
         return new Vector2(Random.Range(-5, 5), Random.Range(-1, 1));
+    }
+
+    public void Pause()
+    {
+        this.pause = true;
     }
 
     void OnCollisionEnter2D(Collision2D collision)

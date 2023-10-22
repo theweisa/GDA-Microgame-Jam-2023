@@ -30,7 +30,7 @@ public class Cursor : MonoBehaviour
         movementInput = movement.action.ReadValue<Vector2>();
         if (select.action.triggered)
         {
-            Debug.Log("action performed");
+            // Debug.Log("action performed");
             OnSelect();
         }
     }
@@ -64,6 +64,7 @@ public class Cursor : MonoBehaviour
             {
                 if (character.impostor == true)
                 {
+                    character.Pause();
                     GameManager.Instance.Win();
                     return;
                 }
@@ -79,7 +80,7 @@ public class Cursor : MonoBehaviour
         if (c)
         {
             overlappedCharacters.Add(c);
-            Debug.Log("added char");
+            // Debug.Log("added char");
         }
         else
         {
@@ -93,7 +94,7 @@ public class Cursor : MonoBehaviour
         if (c)
         {
             overlappedCharacters.Remove(c);
-            Debug.Log("Removed char");
+            // Debug.Log("Removed char");
         }
         else
         {

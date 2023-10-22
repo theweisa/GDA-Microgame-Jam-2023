@@ -16,6 +16,7 @@ public class GameManager : UnitySingleton<GameManager>
     [Tooltip("ONLY 3 NUMBERS! Add number of humans by increasing difficulty.")]
     public List<int> humansPerDifficulty;
     private int numHumans = 0;
+    private bool win = false;
 
     // Start is called before the first frame update
     void Start()
@@ -25,9 +26,16 @@ public class GameManager : UnitySingleton<GameManager>
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        if (controller.GetTimer() < 0.1f)
+        {
+            if (win == true)
+            {
+                Debug.Log("Last minute win");
+                controller.WinGame();
+            }
+        }
     }
 
     void SpawnCharacters()
@@ -49,12 +57,29 @@ public class GameManager : UnitySingleton<GameManager>
     public void Win()
     {
         Debug.Log("Holy awesome");
-        controller.WinGame();
+        win = true;
+        StartCoroutine(WinRoutine());
     }
 
     public void Lose()
     {
         Debug.Log("Damn you suck");
+        StartCoroutine(LoseRoutine());
+    }
+
+    IEnumerator WinRoutine()
+    {
+        // Play Win Animation
+        yield return new WaitForSeconds(1f);
+
+        controller.WinGame();
+    }
+
+    IEnumerator LoseRoutine()
+    {
+        // Play Lose Animation
+        yield return new WaitForSeconds(1f);
+
         controller.LoseGame();
     }
 }
