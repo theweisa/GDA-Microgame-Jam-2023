@@ -56,6 +56,9 @@ public class Character : MonoBehaviour
     }
 
     virtual public void OnDie() {
+        foreach (Transform acc in accessories) {
+            acc.gameObject.SetActive(false);
+        }
         anim.SetBool("die", true);
     }
 

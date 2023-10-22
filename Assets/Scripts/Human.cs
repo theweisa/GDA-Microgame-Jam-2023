@@ -36,9 +36,6 @@ public class Human : Character
 
     public override void OnDie()
     {
-        foreach (Transform acc in accessories) {
-            acc.gameObject.SetActive(false);
-        }
         base.OnDie();
     }
 }
