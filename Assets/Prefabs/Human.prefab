@@ -52,13 +52,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Human
       objectReference: {fileID: 0}
+    - target: {fileID: 8452280894428229120, guid: 108358e257a624815820e00684b1e728, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8452280894428229120, guid: 108358e257a624815820e00684b1e728, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5824608411667243020, guid: 108358e257a624815820e00684b1e728, type: 3}
-      insertIndex: -1
+      insertIndex: 1
       addedObject: {fileID: 1394900480303571231}
   m_SourcePrefab: {fileID: 100100000, guid: 108358e257a624815820e00684b1e728, type: 3}
 --- !u!1 &7812817177429933259 stripped
@@ -79,5 +83,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minSpeed: 1
-  maxSpeed: 3
+  maxSpeed: 5
   impostor: 0
