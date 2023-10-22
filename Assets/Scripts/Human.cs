@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Human : Character
 {
-    public Transform accessories;
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -33,5 +32,13 @@ public class Human : Character
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
+    }
+
+    public override void OnDie()
+    {
+        foreach (Transform acc in accessories) {
+            acc.gameObject.SetActive(false);
+        }
+        base.OnDie();
     }
 }

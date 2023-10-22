@@ -64,11 +64,12 @@ public class Cursor : MonoBehaviour
             {
                 if (character.impostor == true)
                 {
+                    character.OnDie();
                     GameManager.Instance.Win();
                     return;
                 }
             }
-
+            overlappedCharacters[0].OnDie();
             GameManager.Instance.Lose();
         }
     }

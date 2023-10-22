@@ -5,6 +5,7 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     private Rigidbody2D rb;
+    public Transform accessories; 
     public float minSpeed = 1;
     public float maxSpeed = 5;
     private Vector2 prevVelocity;
@@ -37,6 +38,7 @@ public class Character : MonoBehaviour
         // }
 
         // rb.velocity = Vector2.ClampMagnitude(rb.velocity, speed);
+        CheckFlip();
         prevVelocity = rb.velocity;
     }
 
@@ -53,8 +55,22 @@ public class Character : MonoBehaviour
         mov.Stop();
     }
 
+    virtual public void OnDie() {
+        anim.SetBool("die", true);
+    }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         rb.velocity = Vector2.Reflect(prevVelocity, collision.contacts[0].normal);
+    }
+
+    void CheckFlip() {
+        if (GetComponent<SpriteRenderer>()) GetComponent<SpriteRenderer>().flipX = rb.velocity.x > 0;
+        foreach (SpriteRenderer sprite in GetComponentsInChildren<SpriteRenderer>()) {
+            sprite.flipX = rb.velocity.x > 0;
+        }
+        if (prevVelocity.x * rb.velocity.x < 0) {
+            mov.Flip();
+        }
     }
 }
