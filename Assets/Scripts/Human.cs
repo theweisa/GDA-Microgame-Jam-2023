@@ -11,8 +11,8 @@ public class Human : Character
         if (GameManager.Instance.difficulty > 1) {
             SetAccessories();
         }
-        base.Start();
         this.impostor = false;
+        base.Start();
     }
 
     void SetAccessories() {

@@ -10,6 +10,7 @@ public class Character : MonoBehaviour
     private Vector2 prevVelocity;
     public bool impostor;
     private float speed;
+    public Animator anim;
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -19,6 +20,8 @@ public class Character : MonoBehaviour
         rb.AddForce(Random.insideUnitCircle.normalized*speed, ForceMode2D.Impulse);
         AnimatedMovement mov = Global.FindComponent<AnimatedMovement>(gameObject);
         if (mov) mov.Move();
+        anim = anim ? anim : Global.FindComponent<Animator>(gameObject);
+        anim.SetBool("isRobot", impostor);
         //speed = rb.velocity.magnitude;
     }
 

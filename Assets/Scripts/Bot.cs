@@ -7,8 +7,8 @@ public class Bot : Character
     // Start is called before the first frame update
     protected override void Start()
     {
-        base.Start();
         this.impostor = true;
+        base.Start();
     }
 
     // Update is called once per frame
