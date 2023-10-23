@@ -5,9 +5,7 @@ using UnityEngine;
 public class Bot : Character
 {
 
-    [Tooltip("Number of seconds to wait before venting, in Difficulty 3")]
     public float ventTimer = 2.5f;
-    private bool hasVented = false;
 
     public GameObject explosion;
     // Start is called before the first frame update
@@ -17,6 +15,7 @@ public class Bot : Character
         base.Start();
         if (GameManager.Instance.difficulty >= 3) {
             SetAccessories();
+            StartCoroutine(VentRoutine());
         }
     }
 
@@ -24,31 +23,23 @@ public class Bot : Character
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
-
-        if (GameManager.Instance.difficulty >= 2)
-        {
-            if ((Time.deltaTime >= (ventTimer*1000)) && !hasVented)
-            {
-                Debug.Log("Vent");
-                Vent();
-            }
-        }
-    }
-
-    public void Vent()
-    {
-        hasVented = true;
-        StartCoroutine(VentRoutine());
     }
 
     IEnumerator VentRoutine()
     {
+        yield return new WaitForSeconds(ventTimer);
         // play vent out animation
+        anim.SetBool("vent", true);
+        mov.Stop();
 
+        yield return new WaitForSeconds(1f);
         transform.position = GameManager.Instance.getRandomPosition();
 
         // play vent in animation
-        yield return null;
+        anim.SetBool("vent", false);
+        
+        yield return new WaitForSeconds(1f);
+        mov.Move();
     }
 
     override public void OnDie()

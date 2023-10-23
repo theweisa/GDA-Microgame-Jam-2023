@@ -29,7 +29,8 @@ public class GameManager : UnitySingleton<GameManager>
             difficulty = controller.GetDifficulty();
         }
 
-        difficulty = 2;
+        // delete this
+        difficulty = 3;
 
         numHumans = humansPerDifficulty[difficulty-1];
         SpawnCharacters();

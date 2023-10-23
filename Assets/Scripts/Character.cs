@@ -12,7 +12,7 @@ public class Character : MonoBehaviour
     public bool impostor;
     private float speed;
     public Animator anim;
-    private AnimatedMovement mov;
+    protected AnimatedMovement mov;
     private bool stopped = false;
     // private bool pause = false;
 
