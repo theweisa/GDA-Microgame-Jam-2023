@@ -41,6 +41,7 @@ public class Bot : Character
     public IEnumerator Vent(bool unvent=true) {
         Debug.Log("vent!");
         canSelect = false;
+        AudioManager.Instance.PlaySound("Vent");
         // play vent out animation
         anim.SetBool("vent", true);
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
@@ -101,6 +102,7 @@ public class Bot : Character
         AudioManager.Instance.PlaySound("Explosion");
         CameraManager.Instance.StartShake(10, 0.5f, 5);
         GameObject exp = Instantiate(explosion, transform.position, Quaternion.identity);
+        AudioManager.Instance.PlaySound("Explosion");
         yield return new WaitForSeconds(0.5f);
         Destroy(exp);
     }
