@@ -9,15 +9,22 @@ public class AnimatedMovement : MonoBehaviour
     public float rotateTimerOffset;
     public bool moving = false;
     private Vector3 initScale;
+    public AudioSource footsteps;
     
     public void Awake() {
         initScale = transform.localScale;
         rotateTimer += Random.Range(-rotateTimerOffset, rotateTimerOffset);
+
+        // footsteps = AudioManager.Instance.Sounds[Footsteps];
     }
     public void Move() {
         if (moving) return;
         moving = true;
         Turn();
+
+        // footsteps.Play();
+        // footsteps.pitch = Random.Range(0f, 2f);
+        // footsteps.time = Random.Range(0f, 1f);
     }
     public void Stop() {
         if (!moving) return;
@@ -26,6 +33,8 @@ public class AnimatedMovement : MonoBehaviour
         LeanTween.scale(gameObject, initScale, rotateTimer*0.3f).setEaseOutQuad();
         LeanTween.moveLocalY(gameObject, 0f, rotateTimer*0.3f);
         LeanTween.rotateLocal(gameObject, Vector3.zero, rotateTimer*0.3f).setEaseOutQuad();
+
+        footsteps.Stop();
     }
 
     public void Turn(int right=1) {
