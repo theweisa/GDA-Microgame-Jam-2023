@@ -79,7 +79,6 @@ public class Character : MonoBehaviour
             sprite.flipX = xFlip;
         }
         if (prev != xFlip) {
-            Debug.Log("flip bro cmon");
             mov.Flip();
         }
     }

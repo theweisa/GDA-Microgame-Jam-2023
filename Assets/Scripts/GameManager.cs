@@ -7,8 +7,8 @@ public class GameManager : UnitySingleton<GameManager>
 
     public MicrogameJamController controller;
 
-    public int difficulty = 1;
-    // private int difficulty = controller.GetDifficulty();
+    // public int difficulty = 1;
+    [HideInInspector] public int difficulty = 1;
 
     public GameObject Human;
     public GameObject Bot;
@@ -18,11 +18,19 @@ public class GameManager : UnitySingleton<GameManager>
     public List<int> humansPerDifficulty;
     private int numHumans = 0;
     private bool win = false;
+
     [HideInInspector] public Character deadChar;
 
     // Start is called before the first frame update
     void Start()
     {
+        if (controller)
+        {
+            difficulty = controller.GetDifficulty();
+        }
+
+        difficulty = 2;
+
         numHumans = humansPerDifficulty[difficulty-1];
         SpawnCharacters();
     }
@@ -48,12 +56,11 @@ public class GameManager : UnitySingleton<GameManager>
             character = Instantiate(Human, getRandomPosition(), Quaternion.identity);
             character.transform.parent = Characters.transform;
         }
-
         character = Instantiate(Bot, getRandomPosition(), Quaternion.identity);
         character.transform.parent = Characters.transform;
     }
 
-    Vector3 getRandomPosition()
+    public Vector3 getRandomPosition()
     {
         Vector2 bounds = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
         return new Vector3(Random.Range(-bounds.x, bounds.x), Random.Range(-bounds.y, bounds.y), 0);
@@ -64,7 +71,7 @@ public class GameManager : UnitySingleton<GameManager>
         foreach (Transform child in Characters.transform)
         {
             Character chr = child.GetComponent<Character>();
-            Debug.Log(child.transform.position.x < deadChar.transform.position.x);
+            // Debug.Log(child.transform.position.x < deadChar.transform.position.x);
             chr.Pause();
             if (chr != deadChar)
                 chr.CheckFlip(child.transform.position.x < deadChar.transform.position.x);
