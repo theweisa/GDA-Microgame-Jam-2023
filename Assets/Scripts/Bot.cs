@@ -10,7 +10,7 @@ public class Bot : Character
     {
         this.impostor = true;
         base.Start();
-        if (GameManager.Instance.difficulty >= 2) {
+        if (GameManager.Instance.difficulty >= 3) {
             SetAccessories();
         }
     }
@@ -26,7 +26,7 @@ public class Bot : Character
     }
     protected override void SetAccessories() {
         int randIndex = Random.Range(1, accessories.childCount-1);
-        int i = 1;
+        int i = 0;
         foreach (Transform acc in accessories) {
             if (i == randIndex) {
                 acc.gameObject.SetActive(true);
