@@ -10,10 +10,7 @@ public class AudioManager : UnitySingleton<AudioManager>
     // Start is called before the first frame update
     void Start()
     {
-        foreach (Transform child in this.transform)
-        {
-            sounds.Add(child);
-        }
+
     }
 
     // Update is called once per frame
