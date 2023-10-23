@@ -289,7 +289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 516946059}
-  difficulty: 1
+  difficulty: 3
   Human: {fileID: 7812817177429933259, guid: 090c56667b82248ea9de8e28b2c4c7b5, type: 3}
   Bot: {fileID: 322415983073070547, guid: 310a6805a7c0f4d09a9a1c83029f22f3, type: 3}
   Characters: {fileID: 66422666}
