@@ -18,6 +18,7 @@ public class GameManager : UnitySingleton<GameManager>
     public List<int> humansPerDifficulty;
     private int numHumans = 0;
     private bool win = false;
+    [HideInInspector] public Character deadChar;
 
     // Start is called before the first frame update
     void Start()
@@ -62,7 +63,11 @@ public class GameManager : UnitySingleton<GameManager>
     {
         foreach (Transform child in Characters.transform)
         {
-            child.gameObject.GetComponent<Character>().Pause();
+            Character chr = child.GetComponent<Character>();
+            Debug.Log(child.transform.position.x < deadChar.transform.position.x);
+            chr.Pause();
+            if (chr != deadChar)
+                chr.CheckFlip(child.transform.position.x < deadChar.transform.position.x);
         }
     }
 

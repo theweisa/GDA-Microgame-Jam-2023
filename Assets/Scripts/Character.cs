@@ -13,6 +13,7 @@ public class Character : MonoBehaviour
     private float speed;
     public Animator anim;
     private AnimatedMovement mov;
+    private bool stopped = false;
     // private bool pause = false;
 
     // Start is called before the first frame update
@@ -38,7 +39,7 @@ public class Character : MonoBehaviour
         // }
 
         // rb.velocity = Vector2.ClampMagnitude(rb.velocity, speed);
-        CheckFlip();
+        if (!stopped) CheckFlip(rb.velocity.x > 0);
         prevVelocity = rb.velocity;
     }
 
@@ -49,6 +50,7 @@ public class Character : MonoBehaviour
 
     public void Pause()
     {
+        stopped = true;
         // this.pause = true;
         rb.velocity = Vector2.zero;
         // rb.bodyType = RigidbodyType2D.Static;
@@ -56,9 +58,11 @@ public class Character : MonoBehaviour
     }
 
     virtual public void OnDie() {
+        GameManager.Instance.deadChar = this;
         foreach (Transform acc in accessories) {
             acc.gameObject.SetActive(false);
         }
+        stopped = true;
         anim.SetBool("die", true);
     }
 
@@ -67,12 +71,15 @@ public class Character : MonoBehaviour
         rb.velocity = Vector2.Reflect(prevVelocity, collision.contacts[0].normal);
     }
 
-    void CheckFlip() {
-        if (GetComponent<SpriteRenderer>()) GetComponent<SpriteRenderer>().flipX = rb.velocity.x > 0;
+    public void CheckFlip(bool xFlip) {
+        bool prev = false;
+        if (GetComponent<SpriteRenderer>()) GetComponent<SpriteRenderer>().flipX = xFlip;
         foreach (SpriteRenderer sprite in GetComponentsInChildren<SpriteRenderer>()) {
-            sprite.flipX = rb.velocity.x > 0;
+            prev = sprite.flipX;
+            sprite.flipX = xFlip;
         }
-        if (prevVelocity.x * rb.velocity.x < 0) {
+        if (prev != xFlip) {
+            Debug.Log("flip bro cmon");
             mov.Flip();
         }
     }

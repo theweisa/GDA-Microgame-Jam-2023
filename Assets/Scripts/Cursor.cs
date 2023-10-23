@@ -12,6 +12,7 @@ public class Cursor : MonoBehaviour
     private float currentSpeed = 0;
 
     private Vector2 movementInput;
+    bool selected = false;
 
     [SerializeField]
     private InputActionReference movement, select;
@@ -57,9 +58,10 @@ public class Cursor : MonoBehaviour
     void OnSelect()
     {
         Debug.Log("Pressed Select");
-
+        if (selected) return;
         if (overlappedCharacters.Count > 0)
         {
+            selected = true;
             foreach(Character character in overlappedCharacters)
             {
                 if (character.impostor == true)
