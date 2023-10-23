@@ -10,6 +10,9 @@ public class Bot : Character
     {
         this.impostor = true;
         base.Start();
+        if (GameManager.Instance.difficulty >= 2) {
+            SetAccessories();
+        }
     }
 
     // Update is called once per frame
@@ -20,6 +23,19 @@ public class Bot : Character
     override public void OnDie() {
         StartCoroutine(Explode());
         base.OnDie();
+    }
+    protected override void SetAccessories() {
+        int randIndex = Random.Range(1, accessories.childCount-1);
+        int i = 1;
+        foreach (Transform acc in accessories) {
+            if (i == randIndex) {
+                acc.gameObject.SetActive(true);
+            }
+            else {
+                acc.gameObject.SetActive(false);
+            }
+            i++;
+        }
     }
     IEnumerator Explode() {
         CameraManager.Instance.StartShake(10, 0.5f, 5);
