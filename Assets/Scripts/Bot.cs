@@ -5,9 +5,12 @@ using UnityEngine;
 public class Bot : Character
 {
 
-    public float ventTimer = 2.5f;
+    public float ventTimer = 3f;
+    public float ventOffset = 0.5f;
+    public SpriteRenderer shadow;
 
     public GameObject explosion;
+    private RigidbodyConstraints2D rbConstraints;
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -17,34 +20,55 @@ public class Bot : Character
             SetAccessories();
             StartCoroutine(VentRoutine());
         }
+        rbConstraints = rb.constraints;
     }
 
     // Update is called once per frame
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
+        if (!canSelect) {
+            rb.velocity = Vector2.zero;
+        }
     }
 
     IEnumerator VentRoutine()
     {
-        yield return new WaitForSeconds(ventTimer);
+        yield return new WaitForSeconds(ventTimer+Random.Range(-ventOffset, ventOffset));
+        yield return Vent();
+    }
+
+    public IEnumerator Vent(bool unvent=true) {
+        Debug.Log("vent!");
+        canSelect = false;
         // play vent out animation
         anim.SetBool("vent", true);
-        mov.Stop();
-
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        Pause();
+        Vector3 shadowScale = shadow.transform.localScale;
+        LeanTween.scale(shadow.gameObject, shadowScale*1.15f, 0.1f).setEaseOutExpo().setOnComplete(()=>{
+            LeanTween.scale(shadow.gameObject, Vector3.zero, 0.4f).setEaseInExpo();
+        });
         yield return new WaitForSeconds(1f);
-        transform.position = GameManager.Instance.getRandomPosition();
-
-        // play vent in animation
-        anim.SetBool("vent", false);
-        
-        yield return new WaitForSeconds(1f);
-        mov.Move();
+        if (unvent) {
+            transform.position = GameManager.Instance.getRandomPosition();
+            canSelect = true;
+            //yield return new WaitForSeconds(0.3f);
+            // play vent in animation
+            anim.SetBool("vent", false);
+            LeanTween.scale(shadow.gameObject, shadowScale, 0.5f).setEaseOutExpo().setDelay(0.3f);
+            //sprite.gameObject.SetActive(true);
+            yield return new WaitForSeconds(1f);
+            rb.constraints = rbConstraints;
+            Resume();
+        }
     }
 
     override public void OnDie()
     {
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
         StartCoroutine(Explode());
+        canSelect = false;
         base.OnDie();
     }
     protected override void SetAccessories() {
@@ -61,6 +85,7 @@ public class Bot : Character
         }
     }
     IEnumerator Explode() {
+        shadow.gameObject.SetActive(false);
         CameraManager.Instance.StartShake(10, 0.5f, 5);
         GameObject exp = Instantiate(explosion, transform.position, Quaternion.identity);
         yield return new WaitForSeconds(0.5f);

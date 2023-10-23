@@ -22,6 +22,7 @@ public class Human : Character
 
     public override void OnDie()
     {
+        CameraManager.Instance.StartShake(2, 0.25f, 3);
         base.OnDie();
     }
 }

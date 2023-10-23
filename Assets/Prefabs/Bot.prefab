@@ -743,14 +743,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c891cc688e55d4a5fbd6b4cf1ae32fcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprite: {fileID: 8716540764109829458}
   accessories: {fileID: 3941587123809467729}
   minSpeed: 1
   maxSpeed: 5
   impostor: 0
   anim: {fileID: 0}
+  canSelect: 1
+  ventTimer: 3
+  ventOffset: 0.5
+  shadow: {fileID: 2525133986177218900}
   explosion: {fileID: 4374073631449067610, guid: 389029089f963cb44be28d69f9088855, type: 3}
+--- !u!212 &2525133986177218900 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8621941538853541003, guid: 108358e257a624815820e00684b1e728, type: 3}
+  m_PrefabInstance: {fileID: 6101350402410098143}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3941587123809467729 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7070384535707160718, guid: 108358e257a624815820e00684b1e728, type: 3}
+  m_PrefabInstance: {fileID: 6101350402410098143}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &8716540764109829458 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3196155480853272717, guid: 108358e257a624815820e00684b1e728, type: 3}
   m_PrefabInstance: {fileID: 6101350402410098143}
   m_PrefabAsset: {fileID: 0}

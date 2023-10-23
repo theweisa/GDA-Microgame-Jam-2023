@@ -16,6 +16,7 @@ public class GameManager : UnitySingleton<GameManager>
 
     [Tooltip("ONLY 3 NUMBERS! Add number of humans by increasing difficulty.")]
     public List<int> humansPerDifficulty;
+    public Bot imposter;
     private int numHumans = 0;
     private bool win = false;
 
@@ -58,6 +59,7 @@ public class GameManager : UnitySingleton<GameManager>
             character.transform.parent = Characters.transform;
         }
         character = Instantiate(Bot, getRandomPosition(), Quaternion.identity);
+        imposter = character.GetComponent<Bot>();
         character.transform.parent = Characters.transform;
     }
 
@@ -88,6 +90,7 @@ public class GameManager : UnitySingleton<GameManager>
     public void Lose()
     {
         Debug.Log("Damn you suck");
+
         StartCoroutine(LoseRoutine());
     }
 
@@ -105,8 +108,15 @@ public class GameManager : UnitySingleton<GameManager>
     {
         // Play Lose Animation
         PauseCharacters();
+        StartCoroutine(Vent());
         yield return new WaitForSeconds(1f);
 
         controller.LoseGame();
+    }
+
+    IEnumerator Vent() {
+        Debug.Log("vent?");
+        yield return imposter.Vent(false);
+        imposter.gameObject.SetActive(false);
     }
 }

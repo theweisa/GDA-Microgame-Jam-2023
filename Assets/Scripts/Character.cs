@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    private Rigidbody2D rb;
+    protected Rigidbody2D rb;
+    public SpriteRenderer sprite;
     public Transform accessories; 
     public float minSpeed = 1;
     public float maxSpeed = 5;
@@ -12,14 +13,16 @@ public class Character : MonoBehaviour
     public bool impostor;
     private float speed;
     public Animator anim;
-    protected AnimatedMovement mov;
+    public AnimatedMovement mov;
     private bool stopped = false;
+    [HideInInspector] public bool canSelect = true;
     // private bool pause = false;
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        sprite = sprite ? sprite : Global.FindComponent<SpriteRenderer>(gameObject);
         speed = Random.Range(minSpeed, maxSpeed);
         rb.AddForce(Random.insideUnitCircle.normalized*speed, ForceMode2D.Impulse);
         mov = Global.FindComponent<AnimatedMovement>(gameObject);
@@ -69,6 +72,12 @@ public class Character : MonoBehaviour
         rb.velocity = Vector2.zero;
         // rb.bodyType = RigidbodyType2D.Static;
         mov.Stop();
+    }
+    public void Resume()
+    {
+        stopped = false;
+        rb.AddForce(Random.insideUnitCircle.normalized*speed, ForceMode2D.Impulse);
+        mov.Move();
     }
 
     virtual public void OnDie() {

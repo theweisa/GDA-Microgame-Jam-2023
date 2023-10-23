@@ -64,15 +64,17 @@ public class Cursor : MonoBehaviour
             selected = true;
             foreach(Character character in overlappedCharacters)
             {
-                if (character.impostor == true)
+                if (character.impostor == true && character.canSelect)
                 {
                     character.OnDie();
                     GameManager.Instance.Win();
                     return;
                 }
             }
-            overlappedCharacters[0].OnDie();
-            GameManager.Instance.Lose();
+            if (overlappedCharacters[0].canSelect) {
+                overlappedCharacters[0].OnDie();
+                GameManager.Instance.Lose();
+            }
         }
     }
 
