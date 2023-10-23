@@ -451,6 +451,8 @@ MonoBehaviour:
     sound: {fileID: 8210222382119505033}
   - id: Vent
     sound: {fileID: 6179393410576920015}
+  - id: WinSound
+    sound: {fileID: 3308483246981880228}
 --- !u!1 &5459456296523752522
 GameObject:
   m_ObjectHideFlags: 0
@@ -750,7 +752,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4beda6ada28d38843ace55dfe499579d, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.523
   m_Pitch: 1
   Loop: 0
