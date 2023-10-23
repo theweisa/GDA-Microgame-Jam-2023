@@ -35,8 +35,9 @@ public class GameManager : UnitySingleton<GameManager>
         numHumans = humansPerDifficulty[difficulty-1];
         SpawnCharacters();
         
-        Music.Play();
-        Crowd.Play();
+        //Music.Play();
+        //Crowd.Play();
+        // AudioManager.Instance.PlaySound("Music");
     }
 
     // Update is called once per frame
