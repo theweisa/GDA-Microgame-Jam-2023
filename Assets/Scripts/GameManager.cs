@@ -11,6 +11,8 @@ public class GameManager : UnitySingleton<GameManager>
     // public int difficulty = 1;
     [HideInInspector] public int difficulty = 1;
 
+    public AudioSource Music;
+    public AudioSource Crowd;
     public GameObject Human;
     public GameObject Bot;
     public GameObject Characters;
@@ -21,6 +23,7 @@ public class GameManager : UnitySingleton<GameManager>
     private int numHumans = 0;
     private bool win = false;
     [HideInInspector] public bool gameOver = false;
+
 
     [HideInInspector] public Character deadChar;
     public TMPro.TMP_Text startText;
@@ -40,6 +43,11 @@ public class GameManager : UnitySingleton<GameManager>
 
         numHumans = humansPerDifficulty[difficulty-1];
         SpawnCharacters();
+        
+        //Music.Play();
+        //Crowd.Play();
+        AudioManager.Instance.PlaySound("Music");
+        AudioManager.Instance.PlaySound("Crowd");
     }
 
     // Update is called once per frame
@@ -104,6 +112,8 @@ public class GameManager : UnitySingleton<GameManager>
     {
         win = true;
         PauseCharacters();
+        Music.Stop();
+        Crowd.Stop();
         // Play Win Animation
         yield return new WaitForSeconds(2f);
 
@@ -115,6 +125,8 @@ public class GameManager : UnitySingleton<GameManager>
         // Play Lose Animation
         PauseCharacters();
         StartCoroutine(imposter.Vent(false));
+        Music.Stop();
+        Crowd.Stop();
         yield return new WaitForSeconds(2f);
 
         controller.LoseGame();
