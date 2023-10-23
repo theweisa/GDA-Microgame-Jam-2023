@@ -118,7 +118,7 @@ public class GameManager : UnitySingleton<GameManager>
         yield return new WaitForSeconds(1f);
         AudioManager.Instance.PlaySound("WinSound");
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
 
         controller.WinGame();
     }
