@@ -60,12 +60,20 @@ public class Bot : Character
             //sprite.gameObject.SetActive(true);
             yield return new WaitForSeconds(1f);
             rb.constraints = rbConstraints;
-            Resume();
+            if (!GameManager.Instance.gameOver)
+                Resume();
+            else {
+                yield return Vent(false);
+            }
+        }
+        else {
+            gameObject.SetActive(false);
         }
     }
 
     override public void OnDie()
     {
+        StopAllCoroutines();
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
         StartCoroutine(Explode());
         canSelect = false;

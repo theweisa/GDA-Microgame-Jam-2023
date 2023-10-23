@@ -295,7 +295,9 @@ MonoBehaviour:
   Characters: {fileID: 66422666}
   humansPerDifficulty: 0a0000000c00000014000000
   imposter: {fileID: 0}
+  gameOver: 0
   deadChar: {fileID: 0}
+  startText: {fileID: 2142347368}
 --- !u!4 &227314260
 Transform:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : UnitySingleton<GameManager>
 {
@@ -19,8 +20,10 @@ public class GameManager : UnitySingleton<GameManager>
     public Bot imposter;
     private int numHumans = 0;
     private bool win = false;
+    [HideInInspector] public bool gameOver = false;
 
     [HideInInspector] public Character deadChar;
+    public TMPro.TMP_Text startText;
 
     // Start is called before the first frame update
     void Start()
@@ -29,9 +32,11 @@ public class GameManager : UnitySingleton<GameManager>
         {
             difficulty = controller.GetDifficulty();
         }
-
         // delete this
-        difficulty = 3;
+        difficulty = 1;
+        if (difficulty >= 3) {
+            startText.text = "Find the Imposter!";
+        }
 
         numHumans = humansPerDifficulty[difficulty-1];
         SpawnCharacters();
@@ -84,13 +89,14 @@ public class GameManager : UnitySingleton<GameManager>
     public void Win()
     {
         Debug.Log("Holy awesome");
+        gameOver = true;
         StartCoroutine(WinRoutine());
     }
 
     public void Lose()
     {
         Debug.Log("Damn you suck");
-
+        gameOver = true;
         StartCoroutine(LoseRoutine());
     }
 
@@ -99,7 +105,7 @@ public class GameManager : UnitySingleton<GameManager>
         win = true;
         PauseCharacters();
         // Play Win Animation
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
 
         controller.WinGame();
     }
@@ -108,15 +114,9 @@ public class GameManager : UnitySingleton<GameManager>
     {
         // Play Lose Animation
         PauseCharacters();
-        StartCoroutine(Vent());
-        yield return new WaitForSeconds(1f);
+        StartCoroutine(imposter.Vent(false));
+        yield return new WaitForSeconds(2f);
 
         controller.LoseGame();
-    }
-
-    IEnumerator Vent() {
-        Debug.Log("vent?");
-        yield return imposter.Vent(false);
-        imposter.gameObject.SetActive(false);
     }
 }
