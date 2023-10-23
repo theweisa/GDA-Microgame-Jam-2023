@@ -30,6 +30,18 @@ public class AudioManager : UnitySingleton<AudioManager>
             }
         }
     }
+
+    public void StopSound(string id)
+    {
+        foreach (AudioChild child in sounds)
+        {
+            if (child.id == id)
+            {
+                child.Stop();
+                return;
+            }
+        }
+    }
 }
 
 [System.Serializable]
@@ -43,7 +55,13 @@ public class AudioChild {
         sound.volume = newVolume;
     }
 
-    public void Play() {
+    public void Play()
+    {
         this.sound.Play();
+    }
+
+    public void Stop()
+    {
+        this.sound.Stop();
     }
 }

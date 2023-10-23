@@ -112,8 +112,8 @@ public class GameManager : UnitySingleton<GameManager>
     {
         win = true;
         PauseCharacters();
-        Music.Stop();
-        Crowd.Stop();
+        AudioManager.Instance.StopSound("Music");
+        AudioManager.Instance.StopSound("Crowd");
         // Play Win Animation
         yield return new WaitForSeconds(2f);
 
@@ -125,7 +125,8 @@ public class GameManager : UnitySingleton<GameManager>
         // Play Lose Animation
         PauseCharacters();
         StartCoroutine(imposter.Vent(false));
-        Music.Stop();
+        AudioManager.Instance.StopSound("Music");
+        AudioManager.Instance.StopSound("Crowd");
         Crowd.Stop();
         yield return new WaitForSeconds(2f);
 
