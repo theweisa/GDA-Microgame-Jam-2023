@@ -22,6 +22,7 @@ public class Human : Character
 
     public override void OnDie()
     {
+        AudioManager.Instance.PlaySound("Kill");
         CameraManager.Instance.StartShake(2, 0.25f, 3);
         base.OnDie();
     }

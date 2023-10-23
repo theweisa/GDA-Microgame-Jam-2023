@@ -168,7 +168,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Find the Robot
+  m_text: Find the Robot!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 60d256fc1e87ced4598031eb00656bfb, type: 2}
   m_sharedMaterial: {fileID: 6676065085586903756, guid: 60d256fc1e87ced4598031eb00656bfb, type: 2}

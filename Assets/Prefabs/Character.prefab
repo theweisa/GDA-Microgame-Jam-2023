@@ -259,11 +259,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 328e8f2c796704beeb75d6bfcf99d49c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprite: {fileID: 0}
   accessories: {fileID: 7070384535707160718}
   minSpeed: 5
   maxSpeed: 15
   impostor: 0
   anim: {fileID: 0}
+  mov: {fileID: 0}
+  canSelect: 1
 --- !u!50 &-3667980256059880733
 Rigidbody2D:
   serializedVersion: 4
@@ -340,7 +343,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 0.25
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

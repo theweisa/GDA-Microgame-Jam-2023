@@ -300,7 +300,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 3230566f112c84f6d82d84fc53bc85e5, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.25
+  m_Volume: 0.093
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -448,6 +448,8 @@ MonoBehaviour:
     sound: {fileID: 5750351025663946617}
   - id: Kill
     sound: {fileID: 8210222382119505033}
+  - id: Vent
+    sound: {fileID: 6179393410576920015}
 --- !u!1 &5459456296523752522
 GameObject:
   m_ObjectHideFlags: 0
@@ -876,7 +878,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 6b7663c7e01e44f6eaafe09dcea0f019, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.164
   m_Pitch: 1
   Loop: 0
   Mute: 0

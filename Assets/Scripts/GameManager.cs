@@ -66,7 +66,7 @@ public class GameManager : UnitySingleton<GameManager>
     void SpawnCharacters()
     {
         GameObject character;
-        for (int i=0; i <= numHumans; i++)
+        for (int i=0; i < numHumans; i++)
         {
             character = Instantiate(Human, getRandomPosition(), Quaternion.identity);
             character.transform.parent = Characters.transform;
@@ -104,6 +104,7 @@ public class GameManager : UnitySingleton<GameManager>
     public void Lose()
     {
         Debug.Log("Damn you suck");
+        AudioManager.Instance.PlaySound("loseSound");
         gameOver = true;
         StartCoroutine(LoseRoutine());
     }

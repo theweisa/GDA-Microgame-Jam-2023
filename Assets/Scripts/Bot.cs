@@ -49,7 +49,9 @@ public class Bot : Character
         LeanTween.scale(shadow.gameObject, shadowScale*1.15f, 0.1f).setEaseOutExpo().setOnComplete(()=>{
             LeanTween.scale(shadow.gameObject, Vector3.zero, 0.4f).setEaseInExpo();
         });
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.4f);
+        AudioManager.Instance.PlaySound("vent");
+        yield return new WaitForSeconds(0.6f);
         if (unvent) {
             transform.position = GameManager.Instance.getRandomPosition();
             canSelect = true;
@@ -58,7 +60,9 @@ public class Bot : Character
             anim.SetBool("vent", false);
             LeanTween.scale(shadow.gameObject, shadowScale, 0.5f).setEaseOutExpo().setDelay(0.3f);
             //sprite.gameObject.SetActive(true);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.4f);
+            AudioManager.Instance.PlaySound("vent");
+            yield return new WaitForSeconds(0.6f);
             rb.constraints = rbConstraints;
             if (!GameManager.Instance.gameOver)
                 Resume();
@@ -94,6 +98,7 @@ public class Bot : Character
     }
     IEnumerator Explode() {
         shadow.gameObject.SetActive(false);
+        AudioManager.Instance.PlaySound("Explosion");
         CameraManager.Instance.StartShake(10, 0.5f, 5);
         GameObject exp = Instantiate(explosion, transform.position, Quaternion.identity);
         yield return new WaitForSeconds(0.5f);

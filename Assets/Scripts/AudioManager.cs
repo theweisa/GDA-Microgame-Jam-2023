@@ -23,12 +23,13 @@ public class AudioManager : UnitySingleton<AudioManager>
     {
         foreach (AudioChild child in sounds)
         {
-            if (child.id == id)
+            if (child.id.ToLower() == id.ToLower())
             {
                 child.Play();
                 return;
             }
         }
+        Debug.Log($"{id}: Sound not found");
     }
 }
 
@@ -37,7 +38,7 @@ public class AudioChild {
     public string id;
     public AudioSource sound;
 
-    AudioChild(string newId, AudioSource newSound, float newVolume) {
+    public AudioChild(string newId, AudioSource newSound, float newVolume) {
         id = newId;
         sound = newSound;
         sound.volume = newVolume;
