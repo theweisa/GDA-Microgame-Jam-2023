@@ -1206,9 +1206,9 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!82 &1817079073 stripped
+--- !u!82 &2099805790 stripped
 AudioSource:
-  m_CorrespondingSourceObject: {fileID: 6179393410576920015, guid: e5d82974e5c6d462b830d539b51ab4c2, type: 3}
+  m_CorrespondingSourceObject: {fileID: 3308483246981880228, guid: e5d82974e5c6d462b830d539b51ab4c2, type: 3}
   m_PrefabInstance: {fileID: 7027544483004539298}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &2142347368 stripped
@@ -1336,9 +1336,17 @@ PrefabInstance:
       propertyPath: m_Volume
       value: 0.227
       objectReference: {fileID: 0}
+    - target: {fileID: 3308483246981880228, guid: e5d82974e5c6d462b830d539b51ab4c2, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5205886042915435648, guid: e5d82974e5c6d462b830d539b51ab4c2, type: 3}
       propertyPath: m_Name
       value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5750351025663946617, guid: e5d82974e5c6d462b830d539b51ab4c2, type: 3}
+      propertyPath: m_Volume
+      value: 0.101
       objectReference: {fileID: 0}
     - target: {fileID: 6179393410576920015, guid: e5d82974e5c6d462b830d539b51ab4c2, type: 3}
       propertyPath: m_Pitch
@@ -1348,29 +1356,21 @@ PrefabInstance:
       propertyPath: m_Volume
       value: 0.266
       objectReference: {fileID: 0}
-    - target: {fileID: 6928412426573445796, guid: e5d82974e5c6d462b830d539b51ab4c2, type: 3}
-      propertyPath: m_Volume
-      value: 0.093
-      objectReference: {fileID: 0}
     - target: {fileID: 7608628767910705483, guid: e5d82974e5c6d462b830d539b51ab4c2, type: 3}
       propertyPath: sounds.Array.size
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7608628767910705483, guid: e5d82974e5c6d462b830d539b51ab4c2, type: 3}
-      propertyPath: sounds.Array.data[6].id
-      value: Vent
+      propertyPath: sounds.Array.data[7].id
+      value: WinSound
       objectReference: {fileID: 0}
     - target: {fileID: 7608628767910705483, guid: e5d82974e5c6d462b830d539b51ab4c2, type: 3}
-      propertyPath: sounds.Array.data[6].sound
+      propertyPath: sounds.Array.data[7].sound
       value: 
-      objectReference: {fileID: 1817079073}
+      objectReference: {fileID: 2099805790}
     - target: {fileID: 8210222382119505033, guid: e5d82974e5c6d462b830d539b51ab4c2, type: 3}
       propertyPath: m_Volume
       value: 0.161
-      objectReference: {fileID: 0}
-    - target: {fileID: 8379686071785339472, guid: e5d82974e5c6d462b830d539b51ab4c2, type: 3}
-      propertyPath: m_Volume
-      value: 0.164
       objectReference: {fileID: 0}
     - target: {fileID: 9124634584220592200, guid: e5d82974e5c6d462b830d539b51ab4c2, type: 3}
       propertyPath: m_LocalPosition.x

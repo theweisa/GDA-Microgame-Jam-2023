@@ -36,7 +36,7 @@ public class GameManager : UnitySingleton<GameManager>
             difficulty = controller.GetDifficulty();
         }
         // delete this
-        difficulty = 1;
+        difficulty = 3;
         if (difficulty >= 3) {
             startText.text = "Find the Imposter!";
         }
@@ -104,7 +104,6 @@ public class GameManager : UnitySingleton<GameManager>
     public void Lose()
     {
         Debug.Log("Damn you suck");
-        AudioManager.Instance.PlaySound("loseSound");
         gameOver = true;
         StartCoroutine(LoseRoutine());
     }
@@ -116,9 +115,10 @@ public class GameManager : UnitySingleton<GameManager>
 
         AudioManager.Instance.StopSound("Music");
         AudioManager.Instance.StopSound("Crowd");
+        yield return new WaitForSeconds(1f);
         AudioManager.Instance.PlaySound("WinSound");
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
         controller.WinGame();
     }
@@ -132,7 +132,7 @@ public class GameManager : UnitySingleton<GameManager>
         AudioManager.Instance.StopSound("Crowd");
         AudioManager.Instance.PlaySound("LoseSound");
         
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
 
         controller.LoseGame();
     }

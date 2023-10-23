@@ -24,7 +24,6 @@ public class Human : Character
     {
         AudioManager.Instance.PlaySound("Kill");
         CameraManager.Instance.StartShake(2, 0.25f, 3);
-        AudioManager.Instance.PlaySound("Kill");
         base.OnDie();
     }
 }
