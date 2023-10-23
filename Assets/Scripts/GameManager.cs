@@ -10,6 +10,7 @@ public class GameManager : UnitySingleton<GameManager>
 
     // public int difficulty = 1;
     [HideInInspector] public int difficulty = 1;
+    static int setDifficulty = -1;
 
     public AudioSource Music;
     public AudioSource Crowd;
@@ -33,12 +34,18 @@ public class GameManager : UnitySingleton<GameManager>
     {
         if (controller)
         {
+            controller.SetMaxTimer(8f);
             difficulty = controller.GetDifficulty();
+            if (setDifficulty > 0) {
+                Debug.Log($"Set Difficulty: {setDifficulty}");
+                difficulty = setDifficulty;
+                setDifficulty = -1;
+            }
         }
         // delete this
-        difficulty = 3;
+        // difficulty = 3;
         if (difficulty >= 3) {
-            startText.text = "Find the Imposter!";
+            startText.text = "Find the Impostor!";
         }
 
         numHumans = humansPerDifficulty[difficulty-1];
@@ -48,6 +55,18 @@ public class GameManager : UnitySingleton<GameManager>
         //Crowd.Play();
         AudioManager.Instance.PlaySound("Music");
         AudioManager.Instance.PlaySound("Crowd");
+    }
+
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.Alpha1)) {
+            setDifficulty = 1;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2)) {
+            setDifficulty = 2;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3)) {
+            setDifficulty = 3;
+        }
     }
 
     // Update is called once per frame
