@@ -22,9 +22,8 @@ public class AnimatedMovement : MonoBehaviour
         moving = true;
         Turn();
 
-        // footsteps.Play();
-        // footsteps.pitch = Random.Range(0f, 2f);
-        // footsteps.time = Random.Range(0f, 1f);
+        footsteps.Play();
+        footsteps.pitch = Random.Range(0f, 2f);
     }
     public void Stop() {
         if (!moving) return;

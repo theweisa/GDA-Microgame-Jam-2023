@@ -37,7 +37,8 @@ public class GameManager : UnitySingleton<GameManager>
         
         //Music.Play();
         //Crowd.Play();
-        // AudioManager.Instance.PlaySound("Music");
+        AudioManager.Instance.PlaySound("Music");
+        AudioManager.Instance.PlaySound("Crowd");
     }
 
     // Update is called once per frame
