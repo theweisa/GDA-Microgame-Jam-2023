@@ -112,9 +112,11 @@ public class GameManager : UnitySingleton<GameManager>
     {
         win = true;
         PauseCharacters();
+
         AudioManager.Instance.StopSound("Music");
         AudioManager.Instance.StopSound("Crowd");
-        // Play Win Animation
+        AudioManager.Instance.PlaySound("WinSound");
+
         yield return new WaitForSeconds(2f);
 
         controller.WinGame();
@@ -122,12 +124,13 @@ public class GameManager : UnitySingleton<GameManager>
 
     IEnumerator LoseRoutine()
     {
-        // Play Lose Animation
         PauseCharacters();
         StartCoroutine(imposter.Vent(false));
+
         AudioManager.Instance.StopSound("Music");
         AudioManager.Instance.StopSound("Crowd");
-        Crowd.Stop();
+        AudioManager.Instance.PlaySound("LoseSound");
+        
         yield return new WaitForSeconds(2f);
 
         controller.LoseGame();
